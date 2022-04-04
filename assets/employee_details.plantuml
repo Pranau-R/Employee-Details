@@ -1,0 +1,43 @@
+@startuml
+/'
+Module:	employee_details.plantuml
+Function:
+        PlantUML source for employee details.
+	
+Copyright:
+        This file copyright (C) 2022 by
+
+        MCCI Corporation
+        3520 Krums Corners Road
+        Ithaca, NY 14850
+
+        An unpublished work. All rights reserved.
+
+        This file is proprietary information, and may not be disclosed or
+        copied without the prior permission of MCCI Corporation.
+
+	
+Author:
+        Pranau R, MCCI Corporation	April 2022
+
+'/
+
+start
+
+:Create a base class with members to 
+          get basic employee detail;
+:Get the details from user and store them in respective
+            data members using member functions;
+:Create another base class with members to 
+        get employee's work related details;
+:Get the details from user and store them in respective
+            data members using member functions;
+:Now inherit basic employee details class and
+      work detail class into a new sub-class;
+:Create a member function in sub-class to display 
+                    employee details for user;
+:Display Employee Details;
+
+stop
+
+@enduml
