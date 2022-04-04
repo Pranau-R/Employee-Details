@@ -22,6 +22,7 @@ Author:
 
 #include <iostream>
 #include <string.h>
+#include <cstdio>
 
 using namespace std;
 
@@ -37,11 +38,12 @@ class employee
 
     public:
         employee();
-        //employee(int b);
-        //employee(int c);
-        //employee(std::string d);
-        //employee(std::string e);
-        //employee(int f);
+        string name;
+        int id;
+        int age;
+        string bg;
+        string gen;
+        int salary;
     };
 
 /****************************************************************************\
@@ -58,33 +60,51 @@ Function:
 Definition:
         employee :: employee (void);
 Returns:
-        Functions returning type void: nothing.
+        Functions returning type nothing: nothing.
 
 */
 
 employee :: employee ()
     {
+    cout << "\n--- Fill employee's general details below ---\n" << endl;
+
+    //Getting Employee name
     cout << "Enter Employee name: " << endl;
     getline(cin, emp_name);
 
-    //cout << "The name you entered is: " << emp_name << endl;
+    name = emp_name;
 
-    cout << "Enter Employee ID: " << endl;
+    //Getting Employee ID
+    cout << "\nEnter Employee ID: " << endl;
     cin >> emp_id;
 
-    //cout << "The ID you entered is: " << emp_id << endl;
+    id = emp_id;
 
-    cout << "Enter Employee age: " << endl;
+    //Getting Employee age
+    cout << "\nEnter Employee age: " << endl;
     cin >> emp_age;
 
-    cout << "Enter Employee blood group: " << endl;
+    age = emp_age;
+    cin.ignore();
+
+    //Getting Employee blood group
+    cout << "\nEnter Employee blood group: " << endl;
     getline(cin, emp_bg);
 
-    cout << "Enter Employee gender: " << endl;
+    bg = emp_bg;
+
+    //Getting Employee gender
+    cout << "\nEnter Employee gender: " << endl;
     getline(cin, emp_gen);
 
-    cout << "Enter Employee salary: " << endl;
+    gen = emp_gen;
+
+    //Getting Employee salary
+    cout << "\nEnter Employee salary: " << endl;
     cin >> emp_salary;
+
+    salary = emp_salary;
+    cin.ignore();
     }
 
 class emp_work
@@ -96,6 +116,9 @@ class emp_work
 
     public:
         emp_work();
+        string depart;
+        string tsk;
+        string ttk;
     };
 
 /****************************************************************************\
@@ -112,35 +135,74 @@ Function:
 Definition:
         emp_work :: emp_work (void);
 Returns:
-        Functions returning type void: nothing.
+        Functions returning type nothing: nothing.
 
 */
 
 emp_work :: emp_work()
     {
-    cout << "Enter Employee's department: " << endl;
+    cout << "\n--- Fill employee's work details below ---\n" << endl;
+
+    //Getting Employee department
+    cout << "\nEnter Employee's department: " << endl;
     getline(cin, dept);
 
-    cout << "Enter Employee's task: " << endl;
+    depart = dept;
+
+    //Getting Employee task
+    cout << "\nEnter Employee's task: " << endl;
     getline(cin, task);
 
-    cout << "Enter Employee's time taken to complete a task: " << endl;
+    tsk = task;
+
+    //Getting Employee time taken for the task
+    cout << "\nEnter Employee's time taken to complete a task: " << endl;
     getline(cin, timetk);
+
+    ttk = timetk;
     }
 
 class display : public employee, public emp_work
     {
     public:
-        display ();
+        void show();
     };
 
-display :: display ()
-    {
-    cout << "Fill employee's general details below" << endl;
-    employee();
+/****************************************************************************\
+|
+|   Function.
+|
+\****************************************************************************/
 
-    cout << "Fill employee's work details below" << endl;
-    emp_work();
+/*
+
+Name: show()
+Function:
+        To display employee details.
+Definition:
+        void display :: show (void);
+Returns:
+        Functions returning type void: nothing.
+
+*/
+
+void display :: show ()
+    {
+    cout << "\n--- The Employee's General details are ---\n" << endl;
+
+    cout << "Employee Name:\n" << name << "\n" << endl;
+    cout << "Employee ID:\n" << id << "\n" << endl;
+    cout << "Employee age:\n" << age << "\n" << endl;
+    cout << "Employee blood group:\n" << bg << "\n" << endl;
+    cout << "Employee gender:\n" << gen << "\n" << endl;
+    cout << "Employee salary:\n" << salary << "\n" << endl;
+
+    cout << "\n--- The Employee's work details are ---\n" << endl;
+
+    cout << "Enter Employee department:\n" << depart << "\n" << endl;
+    cout << "Enter Employee's task:\n" << tsk << "\n" << endl;
+    cout << "Enter Employee's time taken to complete the task:\n" << ttk << "\n" << endl;
+
     }
 
 /****************************************************************************\
@@ -163,59 +225,17 @@ Returns:
 
 int main()
     {
-    //cout << "Write employee details:" << endl;
+    cout << "--------------------------------------------------------------------------------" << endl;
+    cout << "This is employee_details.exe v1.0.0" << endl;
+    cout << "--------------------------------------------------------------------------------" << endl;
+
+    cout << "It can able to get Employee details such as general details and work related" << endl;
+    cout << "details from user and display them in an organised manner. Now... \n" << endl;
+
     display dis;
 
-    dis.display();
+    dis.show();
 
+    getchar();
     return 0;
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-/*
-employee :: employee (int b)
-    {
-    cout << "Enter Employee ID: " << endl;
-    cin >> b;
-    emp_id = b;
-    }
-
-employee :: employee (int c)
-    {
-    cout << "Enter Employee age: " << endl;
-    cin >> c;
-    emp_age = c;
-    }
-
-employee :: employee (string d)
-    {
-    cout << "Enter Employee blood group: " << endl;
-    getline(cin, d);
-    emp_bg = d;
-    }
-
-employee :: employee (string e)
-    {
-    cout << "Enter Employee gender: " << endl;
-    getline(cin, e);
-    emp_gen = e;
-    }
-
-employee :: employee (int f)
-    {
-    cout << "Enter Employee salary: " << endl;
-    cin >> f;
-    emp_salary = f;
-    }
-*/
