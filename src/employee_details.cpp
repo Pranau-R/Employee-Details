@@ -23,6 +23,7 @@ Author:
 #include <iostream>
 #include <string.h>
 #include <cstdio>
+#include <iomanip>
 
 using namespace std;
 
@@ -32,18 +33,21 @@ class employee
         string emp_name;
         int emp_id;
         int emp_age;
-        string emp_bg;
-        string emp_gen;
-        int emp_salary;
+        string emp_des;
+        string emp_exp;
 
     public:
-        employee();
+        employee()
+            {
+            }
+        void getDetails(bool);
+        int num;
         string name;
         int id;
         int age;
-        string bg;
-        string gen;
-        int salary;
+        void getDetails(bool, bool);
+        string desig;
+        string exp;
     };
 
 /****************************************************************************\
@@ -54,22 +58,24 @@ class employee
 
 /*
 
-Name: employee()
+Name: getDetails()
 Function:
         To get employee details from user
 Definition:
-        employee :: employee (void);
+        void employee :: getDetails (bool);
+Parameter and Arguments:
+        Boolean value true is passed as an arguement in order to execute the codes inside the functions.
 Returns:
-        Functions returning type nothing: nothing.
+        Functions returning type void: nothing.
 
 */
 
-employee :: employee ()
+void employee :: getDetails (bool yes)
     {
-    cout << "\n--- Fill employee's general details below ---\n" << endl;
+    cout << "\n--- Fill Employee's general details below ---\n" << endl;
 
     //Getting Employee name
-    cout << "Enter Employee name: " << endl;
+    cout << "Enter Employee Name: " << endl;
     getline(cin, emp_name);
 
     name = emp_name;
@@ -81,44 +87,53 @@ employee :: employee ()
     id = emp_id;
 
     //Getting Employee age
-    cout << "\nEnter Employee age: " << endl;
+    cout << "\nEnter Employee Age: " << endl;
     cin >> emp_age;
 
     age = emp_age;
     cin.ignore();
-
-    //Getting Employee blood group
-    cout << "\nEnter Employee blood group: " << endl;
-    getline(cin, emp_bg);
-
-    bg = emp_bg;
-
-    //Getting Employee gender
-    cout << "\nEnter Employee gender: " << endl;
-    getline(cin, emp_gen);
-
-    gen = emp_gen;
-
-    //Getting Employee salary
-    cout << "\nEnter Employee salary: " << endl;
-    cin >> emp_salary;
-
-    salary = emp_salary;
-    cin.ignore();
     }
 
-class emp_work
-    {
-    private:
-        string dept;
-        string task;
-        string timetk;
+/****************************************************************************\
+|
+|   Function.
+|
+\****************************************************************************/
 
+/*
+
+Name: getDetails()
+Function:
+        To get employee's working details from user
+Definition:
+        void employee :: getDetails (bool, bool);
+Parameter and Arguments:
+        Boolean value true is passed as an arguement for both arguements in order to execute the codes inside the functions.
+Returns:
+        Functions returning type void: nothing.
+
+*/
+
+void employee :: getDetails (bool yes1, bool yes2)
+    {
+    cout << "\n--- Fill Employee's work details below ---\n" << endl;
+
+    //Getting Employee department
+    cout << "\nEnter Employee's Designation: " << endl;
+    getline(cin, emp_des);
+    desig = emp_des;
+
+    cout << "\nEnter Employee's Experience: " << endl;
+    getline(cin, emp_exp);
+
+    exp = emp_exp;
+    }
+
+class display : public employee
+    {
     public:
-        emp_work();
-        string depart;
-        string tsk;
-        string ttk;
+        void add ();
+        void show();
     };
 
 /****************************************************************************\
@@ -129,44 +144,21 @@ class emp_work
 
 /*
 
-Name: emp_work()
+Name: add()
 Function:
-        To get employee's working details from user
+        To call getDetails() function at same time.
 Definition:
-        emp_work :: emp_work (void);
+        void display :: add (void);
 Returns:
-        Functions returning type nothing: nothing.
+        Functions returning type void: nothing.
 
 */
 
-emp_work :: emp_work()
+void display :: add ()
     {
-    cout << "\n--- Fill employee's work details below ---\n" << endl;
-
-    //Getting Employee department
-    cout << "\nEnter Employee's department: " << endl;
-    getline(cin, dept);
-
-    depart = dept;
-
-    //Getting Employee task
-    cout << "\nEnter Employee's task: " << endl;
-    getline(cin, task);
-
-    tsk = task;
-
-    //Getting Employee time taken for the task
-    cout << "\nEnter Employee's time taken to complete a task: " << endl;
-    getline(cin, timetk);
-
-    ttk = timetk;
+    getDetails(true);
+    getDetails(true, true);
     }
-
-class display : public employee, public emp_work
-    {
-    public:
-        void show();
-    };
 
 /****************************************************************************\
 |
@@ -188,21 +180,22 @@ Returns:
 
 void display :: show ()
     {
-    cout << "\n--- The Employee's General details are ---\n" << endl;
+    cout << "\n------------------------------------------------------------\n" << endl;
+    cout << "\n--- Details of Employee ---\n" << endl;
+    cout << "\n------------------------------------------------------------\n" << endl;
+
+    //cout << "ID" << setw(15) << "Name" << setw(10) << "age" << setw(10) << "Designation" << setw(10) << "Experience";
+    //cout << endl;
+
+    //cout << "\n" << dis[i].id << setw(15) << "Name" << setw(10) << "age" << setw(10) << "Designation" << setw(10) << "Experience";
+    //cout << endl;
 
     cout << "Employee Name:\n" << name << "\n" << endl;
     cout << "Employee ID:\n" << id << "\n" << endl;
-    cout << "Employee age:\n" << age << "\n" << endl;
-    cout << "Employee blood group:\n" << bg << "\n" << endl;
-    cout << "Employee gender:\n" << gen << "\n" << endl;
-    cout << "Employee salary:\n" << salary << "\n" << endl;
+    cout << "Employee Age:\n" << age << "\n" << endl;;
 
-    cout << "\n--- The Employee's work details are ---\n" << endl;
-
-    cout << "Enter Employee department:\n" << depart << "\n" << endl;
-    cout << "Enter Employee's task:\n" << tsk << "\n" << endl;
-    cout << "Enter Employee's time taken to complete the task:\n" << ttk << "\n" << endl;
-
+    cout << "Employee Designation:\n" << desig << "\n" << endl;
+    cout << "Employee Experience:\n" << exp << "\n" << endl;
     }
 
 /****************************************************************************\
@@ -226,16 +219,70 @@ Returns:
 int main()
     {
     cout << "--------------------------------------------------------------------------------" << endl;
-    cout << "This is employee_details.exe v1.0.0" << endl;
+    cout << "This is employee_details.exe v1.1.0" << endl;
     cout << "--------------------------------------------------------------------------------" << endl;
 
-    cout << "It can able to get Employee details such as general details and work related" << endl;
-    cout << "details from user and display them in an organised manner. Now... \n" << endl;
+    cout << "It can able to get and display multi number of Employee details as per user's" << endl;
+    cout << "wish. An interactive Menu is given for user's choice of operation. Now... \n" << endl;
 
-    display dis;
+    extern int num;
+    int i;
+    int ch;
 
-    dis.show();
+    cout << "Enter the number of Employee Required: \n" << endl;
+    cin >> num;
+    cin.ignore();
 
-    getchar();
+    display dis[num];
+
+    cout << "\n======== MENU ======== \n" << endl;
+    cout << "1. Enter " << num << " Employee details: \n" << endl;
+    cout << "2. Display details: \n" << endl;
+    cout << "3. Modify number of Employee: \n" << endl;
+    cout << "4. Exit \n" << endl;
+
+    while(1)
+        {
+        cout << "Enter the choice: \n" << endl;
+        cin >> ch;
+        cin.ignore();
+
+        switch(ch)
+            {
+            case 1:
+                {
+                cout << "You selected to enter Employee details: \n" << endl;
+                for (i = 0; i < num; i++)
+                    {
+                    dis[i].add();
+                    }
+                break;
+                }
+            case 2:
+                {
+                cout << "You selected Display: \n" << endl;
+                for (i = 0; i < num; i++)
+                    {
+                    dis[i].show();
+                    }
+                break;
+                }
+            case 3:
+                {
+                cout << "Enter the number of Employee Required: \n" << endl;
+                cin >> num;
+                cin.ignore();
+                break;
+                }
+            case 4:
+                {
+                return 0;
+                }
+            default:
+                {
+                cout << "Invalid Entry!!!\n" << endl;
+                }
+            }
+        };
     return 0;
     }
