@@ -27,6 +27,8 @@ Author:
 
 using namespace std;
 
+int num;
+
 class employee
     {
     private:
@@ -41,7 +43,6 @@ class employee
             {
             }
         void getDetails(bool);
-        int num;
         string name;
         int id;
         int age;
@@ -118,11 +119,12 @@ void employee :: getDetails (bool yes1, bool yes2)
     {
     cout << "\n--- Fill Employee's work details below ---\n" << endl;
 
-    //Getting Employee department
+    //Getting Employee designation
     cout << "\nEnter Employee's Designation: " << endl;
     getline(cin, emp_des);
     desig = emp_des;
 
+    //Getting Employee experience
     cout << "\nEnter Employee's Experience: " << endl;
     getline(cin, emp_exp);
 
@@ -133,7 +135,6 @@ class display : public employee
     {
     public:
         void add ();
-        void show();
     };
 
 /****************************************************************************\
@@ -162,44 +163,6 @@ void display :: add ()
 
 /****************************************************************************\
 |
-|   Function.
-|
-\****************************************************************************/
-
-/*
-
-Name: show()
-Function:
-        To display employee details.
-Definition:
-        void display :: show (void);
-Returns:
-        Functions returning type void: nothing.
-
-*/
-
-void display :: show ()
-    {
-    cout << "\n------------------------------------------------------------\n" << endl;
-    cout << "\n--- Details of Employee ---\n" << endl;
-    cout << "\n------------------------------------------------------------\n" << endl;
-
-    //cout << "ID" << setw(15) << "Name" << setw(10) << "age" << setw(10) << "Designation" << setw(10) << "Experience";
-    //cout << endl;
-
-    //cout << "\n" << dis[i].id << setw(15) << "Name" << setw(10) << "age" << setw(10) << "Designation" << setw(10) << "Experience";
-    //cout << endl;
-
-    cout << "Employee Name:\n" << name << "\n" << endl;
-    cout << "Employee ID:\n" << id << "\n" << endl;
-    cout << "Employee Age:\n" << age << "\n" << endl;;
-
-    cout << "Employee Designation:\n" << desig << "\n" << endl;
-    cout << "Employee Experience:\n" << exp << "\n" << endl;
-    }
-
-/****************************************************************************\
-|
 |   Main Function.
 |
 \****************************************************************************/
@@ -219,7 +182,7 @@ Returns:
 int main()
     {
     cout << "--------------------------------------------------------------------------------" << endl;
-    cout << "This is employee_details.exe v1.1.0" << endl;
+    cout << setw(50) << "This is employee_details.exe v1.1.0" << endl;
     cout << "--------------------------------------------------------------------------------" << endl;
 
     cout << "It can able to get and display multi number of Employee details as per user's" << endl;
@@ -243,7 +206,7 @@ int main()
 
     while(1)
         {
-        cout << "Enter the choice: \n" << endl;
+        cout << "\nEnter the choice: \n" << endl;
         cin >> ch;
         cin.ignore();
 
@@ -251,7 +214,7 @@ int main()
             {
             case 1:
                 {
-                cout << "You selected to enter Employee details: \n" << endl;
+                cout << "\nYou selected to enter Employee details: \n" << endl;
                 for (i = 0; i < num; i++)
                     {
                     dis[i].add();
@@ -260,16 +223,22 @@ int main()
                 }
             case 2:
                 {
-                cout << "You selected Display: \n" << endl;
+                cout << "\nYou selected Display: \n" << endl;
+                cout << "\n-----------------------------------------------------------------------\n" << endl;
+                cout << setw(50) << "--- Details of Employee ---" << endl;
+                cout << "\n-----------------------------------------------------------------------\n" << endl;
+                cout << "ID" << setw(15) << "Name" << setw(12) << "age" << setw(18) << "Designation" << setw(18) << "Experience";
+                cout << endl;
                 for (i = 0; i < num; i++)
                     {
-                    dis[i].show();
+                    cout << "\n" << dis[i].id << setw(15) << dis[i].name << setw(10) << dis[i].age << setw(21) << dis[i].desig << setw(13) << dis[i].exp;
                     }
+                cout << "\n-----------------------------------------------------------------------\n" << endl;
                 break;
                 }
             case 3:
                 {
-                cout << "Enter the number of Employee Required: \n" << endl;
+                cout << "\nEnter the number of Employee Required: \n" << endl;
                 cin >> num;
                 cin.ignore();
                 break;
@@ -280,7 +249,7 @@ int main()
                 }
             default:
                 {
-                cout << "Invalid Entry!!!\n" << endl;
+                cout << "\nInvalid Entry!!!\n" << endl;
                 }
             }
         };

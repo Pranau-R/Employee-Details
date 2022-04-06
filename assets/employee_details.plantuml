@@ -28,15 +28,31 @@ start
           get basic employee detail;
 :Get the details from user and store them in respective
             data members using member functions;
-:Create another base class with members to 
-        get employee's work related details;
-:Get the details from user and store them in respective
-            data members using member functions;
-:Now inherit basic employee details class and
-      work detail class into a new sub-class;
-:Create a member function in sub-class to display 
-                    employee details for user;
-:Display Employee Details;
+:Now inherit base class into a new sub-class;
+:Display menu;
+:Read choice;
+
+while (choice is not exit) is (yes)
+
+fork
+
+-> case1;
+:Get Employee details;
+
+fork again
+
+-> case2;
+:Display details;
+
+fork again
+->case3;
+:Modify input;
+
+end fork
+
+:Read choice;
+
+end while
 
 stop
 
