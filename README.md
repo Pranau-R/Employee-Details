@@ -21,4 +21,4 @@ Following is the Flowchart for the task:
 
 - Version:
 
-    employee-details Version_v1.0.0
+    employee-details Version_v1.1.0
