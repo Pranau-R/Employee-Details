@@ -17,7 +17,7 @@ The repository consists of following directories:
 
 Following is the Flowchart for the task:
 
-![Employee details Flowchart](assets/employee_details.png)
+![Employee details Flowchart](assets/employee_details_a.png)
 
 - Version:
 
